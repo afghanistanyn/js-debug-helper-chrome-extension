@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "js debug helper chrome extension",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "inject js debug helper functions",
+    "description": "The description of the application"
+  }
+}
