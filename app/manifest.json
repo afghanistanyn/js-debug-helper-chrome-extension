@@ -28,8 +28,8 @@
       "js": [
         "scripts/contentscript.js"
       ],
-      "run_at": "document_end",
-      "all_frames": false
+      "run_at": "document_start",
+      "all_frames": true
     }
   ],
   "web_accessible_resources": [
