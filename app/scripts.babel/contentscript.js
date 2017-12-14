@@ -25,7 +25,8 @@ function getScript(path) {
 }
 
 let helperFileList = [
-  'diff_window_obj.js'
+  'diff_window_obj.js',
+  'prototype.js'
 ];
 
 helperFileList.forEach(file => {
