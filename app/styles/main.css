@@ -1,3 +1,18 @@
 body {
   padding: 20px;
 }
+
+.options-page {
+  width: 600px;
+}
+
+.options-page table {
+  border-collapse: collapse;
+}
+
+.options-page table td {
+  border: 1px solid #999;
+  text-align: center;
+  padding: 8px 10px;
+  font-size: 16px;
+}

@@ -1,25 +1,36 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <!-- build:css styles/options-vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css styles/main.css -->
-    <link href="styles/main.css" rel="stylesheet">
-    <!-- endbuild -->
-  </head>
-  <body>
-    <h1>JS Debug Helper Preference</h1>
+<head>
+  <meta charset="utf-8">
+  <!-- build:css styles/options-vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css styles/main.css -->
+  <link href="styles/main.css" rel="stylesheet">
+  <!-- endbuild -->
+</head>
+<body class="options-page">
 
-    <!-- build:js scripts/options-vendor.js -->
-    <!-- bower:js -->
-    <!-- endbower -->
-    <!-- endbuild -->
+<table id="js-hook-set-table">
+  <thead>
+  <tr>
+    <td>target</td>
+    <td>enable hook?</td>
+    <td>enable trace?</td>
+  </tr>
+  </thead>
+  <tbody id="js-hook-set-table-body">
+  </tbody>
+</table>
 
-    <!-- build:js scripts/options.js -->
-    <script src="scripts/options.js"></script>
-    <!-- endbuild -->
-  </body>
+<!-- build:js scripts/options-vendor.js -->
+<!-- bower:js -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js scripts/options.js -->
+<script src="scripts/options.js"></script>
+<!-- endbuild -->
+</body>
 </html>
