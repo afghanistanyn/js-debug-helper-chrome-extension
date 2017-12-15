@@ -22,5 +22,14 @@ window.__hookjs = {
         return oriSetter.apply(this, arguments)
       }
     })
+  },
+  hook_window_eval: function (trace) {
+    let oriEval = window.eval;
+    window.eval = function (str) {
+      __hookjsLog(`Eval ${str}`);
+      __hookjsTrace(trace);
+      // return oriEval(str);
+      return oriEval.apply(this, arguments);
+    }
   }
 };

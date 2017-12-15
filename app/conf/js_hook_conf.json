@@ -2,5 +2,9 @@
   "document_domain": {
     "hook": true,
     "trace": true
+  },
+  "window_eval": {
+    "hook": true,
+    "trace": true
   }
 }
