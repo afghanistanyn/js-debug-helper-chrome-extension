@@ -43,17 +43,38 @@ function loadFileSync(url) {
   }
 }
 
+/**
+ * 注入 Helper 文件到宿主页面
+ */
+function injectHelpers() {
+  // 需要同步加载的 helper 文件（即：在宿主页面之前执行）
+  let helperFileSync = [
+    'js_hook.js'
+  ];
+  // 可以异步加载的 helper 文件
+  let helperFileAsync = [
+    'diff_window_obj.js',
+    'prototype.js'
+  ];
 
-let helperFileList = [
-  'diff_window_obj.js',
-  'prototype.js'
-];
+  helperFileAsync.forEach(file => {
+    let path = `scripts/helpers/${file}`;
+    let url = chrome.runtime.getURL(path);
+    loadFile(url).then(scriptSource => {
+      // console.log(scriptSource);
+      injectScript(scriptSource);
+    })
+  });
 
-helperFileList.forEach(file => {
-  let path = `scripts/helpers/${file}`;
-  let url = chrome.runtime.getURL(path);
-  loadFile(url).then(scriptSource => {
-    // console.log(scriptSource);
+  helperFileSync.forEach(file => {
+    let path = `scripts/helpers/${file}`;
+    let url = chrome.runtime.getURL(path);
+    let scriptSource = loadFileSync(url);
     injectScript(scriptSource);
-  })
-});
+  });
+}
+
+// 入口
+(function main() {
+  injectHelpers();
+})();
