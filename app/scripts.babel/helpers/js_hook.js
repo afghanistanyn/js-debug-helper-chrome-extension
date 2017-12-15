@@ -39,5 +39,13 @@ window.__hookjs = {
       __hookjsTrace(trace);
       return oriSetTimeout.apply(this, arguments);
     }
+  },
+  hook_window_setInterval: function (trace) {
+    let oriSetInterval = window.setInterval;
+    window.setInterval = function () {
+      __hookjsLog(`setInterval ${arguments[0]}`);
+      __hookjsTrace(trace);
+      return oriSetInterval.apply(this, arguments);
+    }
   }
 };

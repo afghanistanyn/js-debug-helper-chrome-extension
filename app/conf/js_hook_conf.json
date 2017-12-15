@@ -10,5 +10,9 @@
   "window_setTimeout": {
     "hook": true,
     "trace": true
+  },
+  "window_setInterval": {
+    "hook": true,
+    "trace": true
   }
 }
