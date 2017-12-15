@@ -47,5 +47,78 @@ window.__hookjs = {
       __hookjsTrace(trace);
       return oriSetInterval.apply(this, arguments);
     }
-  }
+  },
+
+  // HTMLScriptElement src, text, innerText, textContent, todo other ??
+  hook_HTMLScriptElement_src: function (trace) {
+    let oriSetter = HTMLScriptElement.prototype.__lookupSetter__('src');
+    let oriGetter = HTMLScriptElement.prototype.__lookupGetter__('src');
+    Object.defineProperty(HTMLScriptElement.prototype, 'src', {
+      get: function (src) {
+        __hookjsLog('GET HTMLScriptElement_src');
+        __hookjsTrace(trace);
+        return oriGetter.apply(this, arguments)
+      },
+      set: function (src) {
+        __hookjsLog(`SET HTMLScriptElement_src ${arguments[0]}`);
+        __hookjsTrace(trace);
+        return oriSetter.apply(this, arguments);
+      }
+    })
+  },
+
+  hook_HTMLScriptElement_text: function (trace) {
+    let oriSetter = HTMLScriptElement.prototype.__lookupSetter__('text');
+    let oriGetter = HTMLScriptElement.prototype.__lookupGetter__('text');
+    Object.defineProperty(HTMLScriptElement.prototype, 'text', {
+      get: function (text) {
+        __hookjsLog('GET HTMLScriptElement_text');
+        __hookjsTrace(trace);
+        return oriGetter.apply(this, arguments);
+      },
+      set: function (text) {
+        __hookjsLog(`SET HTMLScriptElement_text ${arguments[0]}`);
+        __hookjsTrace(trace);
+        return oriSetter.apply(this, arguments)
+      }
+    })
+  },
+
+  hook_HTMLScriptElement_innerText: function (trace) {
+    let oriSetter = HTMLElement.prototype.__lookupSetter__('innerText');
+    let oriGetter = HTMLElement.prototype.__lookupGetter__('innerText');
+    // shadow HTMLElement.prototype 的 innerText
+    Object.defineProperty(HTMLScriptElement.prototype, 'innerText', {
+      get: function (text) {
+        __hookjsLog('GET HTMLScriptElement_innerText');
+        __hookjsTrace(trace);
+        return oriGetter.apply(this, arguments)
+      },
+      set: function (text) {
+        __hookjsLog(`SET HTMLScriptElement_innerText ${arguments[0]}`);
+        __hookjsTrace(trace);
+        return oriSetter.apply(this, arguments);
+      }
+    })
+  },
+
+  hook_HTMLScriptElement_textContent: function (trace) {
+    let oriSetter = Node.prototype.__lookupSetter__('textContent');
+    let oriGetter = Node.prototype.__lookupGetter__('textContent');
+    // shadow Node.prototype 的 textContent
+    Object.defineProperty(HTMLScriptElement.prototype, 'textContent', {
+      get: function (text) {
+        __hookjsLog('GET HTMLScriptElement_textContent');
+        __hookjsTrace(trace);
+        return oriGetter.apply(this, arguments);
+      },
+      set: function (text) {
+        __hookjsLog(`SET HTMLScriptElement_textContent ${arguments[0]}`);
+        __hookjsTrace(trace);
+        return oriSetter.apply(this, arguments)
+      }
+    })
+  },
+
+
 };
