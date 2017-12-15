@@ -10,19 +10,39 @@ function injectScript(scriptString) {
   // script.parentNode.removeChild(script);
 }
 
-function getScript(path) {
-  let url = chrome.runtime.getURL(path);
-  fetch(url).then(res => {
+/**
+ * 异步加载文件
+ * @param url
+ * @return {*|Promise.<TResult>}
+ */
+function loadFile(url) {
+  return fetch(url).then(res => {
     if (res.ok) {
       return res.text();
     } else {
-      console.log(`fetch ${path} failed`);
+      alert(`fetch ${path} failed`);
     }
-  }).then(scriptSource => {
-    // console.log(scriptSource);
-    injectScript(scriptSource);
   })
 }
+//
+/**
+ * 同步加载文件
+ * @param url
+ * @return {string} 文件内容
+ */
+function loadFileSync(url) {
+  let request = new XMLHttpRequest();
+  request.open('GET', url, false);  // `false` makes the request synchronous
+  request.send(null);
+
+  if (request.status === 200) {
+    // console.log(request.responseText);
+    return request.responseText;
+  } else {
+    alert(`loadFileSync ${url} failed`);
+  }
+}
+
 
 let helperFileList = [
   'diff_window_obj.js',
@@ -31,5 +51,9 @@ let helperFileList = [
 
 helperFileList.forEach(file => {
   let path = `scripts/helpers/${file}`;
-  getScript(path);
+  let url = chrome.runtime.getURL(path);
+  loadFile(url).then(scriptSource => {
+    // console.log(scriptSource);
+    injectScript(scriptSource);
+  })
 });
