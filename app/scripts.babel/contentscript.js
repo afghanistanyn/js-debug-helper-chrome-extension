@@ -74,7 +74,27 @@ function injectHelpers() {
   });
 }
 
+/**
+ * 注入 JSHook 的调用到宿主页面
+ * conf/js_hook_conf.json 用于动态配置 hook 哪些函数、属性以及是否 trace
+ */
+function injectJSHookCall() {
+  // 原计划通过 options 页面，对 JSHook 进行设置，并保存到 chrome.storage.local。但是内容脚本只能异步读取 chrome.storage.local，
+  // 导致无法在宿主页面之前完成 hook，所以改为下面方案
+  // 同步加载 js_hook_conf.json 读取配置
+  let jsHookConf = JSON.parse(loadFileSync(chrome.runtime.getURL('conf/js_hook_conf.json')));
+  // console.log(jsHookConf);
+
+  let script = '';
+  Object.keys(jsHookConf).forEach(key => {
+    if (jsHookConf[key].hook) {
+      script += `window.__hookjs['hook_${key}'](${jsHookConf[key].trace});`;
+    }
+  });
+  injectScript(script);
+}
 // 入口
 (function main() {
   injectHelpers();
+  injectJSHookCall();
 })();

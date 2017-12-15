@@ -24,10 +24,3 @@ window.__hookjs = {
     })
   }
 };
-
-(function main() {
-  Object.keys(window.__hookjs).forEach(key => {
-    window.__hookjs[key](true);
-  });
-  console.log('js hook finish...');
-})();
