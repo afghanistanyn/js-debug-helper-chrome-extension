@@ -6,5 +6,9 @@
   "window_eval": {
     "hook": true,
     "trace": true
+  },
+  "window_setTimeout": {
+    "hook": true,
+    "trace": true
   }
 }

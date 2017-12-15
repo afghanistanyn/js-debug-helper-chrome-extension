@@ -31,5 +31,13 @@ window.__hookjs = {
       // return oriEval(str);
       return oriEval.apply(this, arguments);
     }
+  },
+  hook_window_setTimeout: function (trace) {
+    let oriSetTimeout = window.setTimeout;
+    window.setTimeout = function () {
+      __hookjsLog(`setTimeout ${arguments[0]}`);
+      __hookjsTrace(trace);
+      return oriSetTimeout.apply(this, arguments);
+    }
   }
 };
