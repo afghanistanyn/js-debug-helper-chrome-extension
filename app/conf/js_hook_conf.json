@@ -1,0 +1,6 @@
+{
+  "document_domain": {
+    "hook": true,
+    "trace": true
+  }
+}
