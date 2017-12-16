@@ -203,5 +203,23 @@ window.__hookjs = {
         return oriSetter.apply(this, arguments)
       }
     })
+  },
+  // Object.getOwnPropertyDescriptor(Document.prototype,'referrer')
+  // {get: ƒ, set: undefined, enumerable: true, configurable: true}
+  hook_document_referrer: function (trace) {
+    let oriGetter = Document.prototype.__lookupGetter__('referrer');
+    let _ref = document.referrer;
+    Object.defineProperty(Document.prototype, 'referrer', {
+      get: function () {
+        __hookjsLog(`GET document_referrer ${_ref}`);
+        __hookjsTrace(trace);
+        return _ref;
+      },
+      set: function () { // todo referrer spoofing
+        __hookjsLog(`SET document_referrer ${arguments[0]}`);
+        _ref = arguments[0];
+        return _ref;
+      }
+    })
   }
 };
