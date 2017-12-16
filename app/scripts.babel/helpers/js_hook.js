@@ -49,7 +49,7 @@ window.__hookjs = {
     }
   },
 
-  // HTMLScriptElement src, text, innerText, textContent, todo other ??
+  // HTMLScriptElement src, text, innerText, insertAdjacentText, textContent, todo other ??
   hook_HTMLScriptElement_src: function (trace) {
     let oriSetter = HTMLScriptElement.prototype.__lookupSetter__('src');
     let oriGetter = HTMLScriptElement.prototype.__lookupGetter__('src');
@@ -100,6 +100,16 @@ window.__hookjs = {
         return oriSetter.apply(this, arguments);
       }
     })
+  },
+
+  // todo 其它 Element 的 insertAdjacentText 会有问题么？
+  hook_HTMLScriptElement_insertAdjacentText: function (trace) {
+    let oriFunc = Element.prototype.insertAdjacentText;
+    Element.prototype.insertAdjacentText = function () {
+      __hookjsLog(`SET HTMLScriptElement_insertAdjacentText position:${arguments[0]} text:${arguments[1]}`);
+      __hookjsTrace(trace);
+      return oriFunc.apply(this, arguments)
+    }
   },
 
   hook_HTMLScriptElement_textContent: function (trace) {

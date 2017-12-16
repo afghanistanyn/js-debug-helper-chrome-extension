@@ -27,6 +27,10 @@
     "hook": true,
     "trace": true
   },
+  "HTMLScriptElement_insertAdjacentText": {
+    "hook": true,
+    "trace": true
+  },
   "HTMLScriptElement_textContent": {
     "hook": true,
     "trace": true
