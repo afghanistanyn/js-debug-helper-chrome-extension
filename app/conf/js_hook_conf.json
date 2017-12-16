@@ -54,5 +54,9 @@
   "Element_insertAdjacentHTML": {
     "hook": true,
     "trace": true
+  },
+  "window_name": {
+    "hook": true,
+    "trace": true
   }
 }

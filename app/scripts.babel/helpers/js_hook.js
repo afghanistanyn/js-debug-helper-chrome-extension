@@ -185,6 +185,23 @@ window.__hookjs = {
       __hookjsTrace(trace);
       return oriFunc.apply(this, arguments);
     }
-  }
+  },
 
+  // source
+  hook_window_name: function (trace) {
+    let oriSetter = window.__lookupSetter__('name');
+    let oriGetter = window.__lookupGetter__('name');
+    Object.defineProperty(window, 'name', {
+      get: function () {
+        __hookjsLog(`GET window_name ${oriGetter.apply(this, arguments)}`);
+        __hookjsTrace(trace);
+        return oriGetter.apply(this, arguments)
+      },
+      set: function () {
+        __hookjsLog(`SET window_name ${arguments[0]}`);
+        __hookjsTrace(trace);
+        return oriSetter.apply(this, arguments)
+      }
+    })
+  }
 };
