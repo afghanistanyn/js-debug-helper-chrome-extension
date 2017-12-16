@@ -23,6 +23,14 @@ window.__hookjs = {
       }
     })
   },
+  hook_document_write: function (trace) {
+    let oriDocumentWrite = Document.prototype.write;
+    Document.prototype.write = function (str) {
+      __hookjsLog(`document_write ${str}`);
+      __hookjsTrace(trace);
+      return oriDocumentWrite.apply(this, arguments);
+    }
+  },
   hook_window_eval: function (trace) {
     let oriEval = window.eval;
     window.eval = function (str) {

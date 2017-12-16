@@ -3,6 +3,10 @@
     "hook": true,
     "trace": true
   },
+  "document_write": {
+    "hook": true,
+    "trace": true
+  },
   "window_eval": {
     "hook": true,
     "trace": true
