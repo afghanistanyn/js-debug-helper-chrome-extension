@@ -130,5 +130,45 @@ window.__hookjs = {
     })
   },
 
+  hook_Element_innerHTML: function (trace) {
+    let oriSetter = Element.prototype.__lookupSetter__('innerHTML');
+    let oriGetter = Element.prototype.__lookupGetter__('innerHTML');
+    Object.defineProperty(Element.prototype, 'innerHTML', {
+      get: function () {
+        __hookjsLog(`GET Element_innerHTML ${oriGetter.apply(this, arguments)}`);
+        __hookjsTrace(trace);
+        return oriGetter.apply(this, arguments);
+      },
+      set: function (html) {
+        __hookjsLog(`SET Element_innerHTML ${arguments[0]}`);
+        __hookjsTrace(trace);
+        return oriSetter.apply(this, arguments)
+      }
+    })
+  },
+  hook_Element_outerHTML: function (trace) {
+    let oriSetter = Element.prototype.__lookupSetter__('outerHTML');
+    let oriGetter = Element.prototype.__lookupGetter__('outerHTML');
+    Object.defineProperty(Element.prototype, 'outerHTML', {
+      get: function () {
+        __hookjsLog(`GET Element_outerHTML ${oriGetter.apply(this, arguments)}`);
+        __hookjsTrace(trace);
+        return oriGetter.apply(this, arguments);
+      },
+      set: function (html) {
+        __hookjsLog(`SET Element_outerHTML ${arguments[0]}`);
+        __hookjsTrace(trace);
+        return oriSetter.apply(this, arguments)
+      }
+    })
+  },
+  hook_Element_insertAdjacentHTML: function (trace) {
+    let oriFunc = Element.prototype.insertAdjacentHTML;
+    Element.prototype.insertAdjacentHTML = function () {
+      __hookjsLog(`SET Element_insertAdjacentHTML position:${arguments[0]} text:${arguments[1]}`);
+      __hookjsTrace(trace);
+      return oriFunc.apply(this, arguments);
+    }
+  }
 
 };

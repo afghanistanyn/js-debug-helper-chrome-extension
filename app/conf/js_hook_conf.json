@@ -34,5 +34,17 @@
   "HTMLScriptElement_textContent": {
     "hook": true,
     "trace": true
+  },
+  "Element_innerHTML": {
+    "hook": true,
+    "trace": true
+  },
+  "Element_outerHTML": {
+    "hook": true,
+    "trace": true
+  },
+  "Element_insertAdjacentHTML": {
+    "hook": true,
+    "trace": true
   }
 }
