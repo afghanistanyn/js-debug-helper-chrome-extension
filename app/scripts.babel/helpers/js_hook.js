@@ -48,6 +48,14 @@ window.__hookjs = {
       return oriEval.apply(this, arguments);
     }
   },
+  hook_window_Function: function (trace) {
+    let oriFunction = window.Function;
+    window.Function = function () {
+      __hookjsLog(`new Function ,functionBody: ${arguments[arguments.length - 1]}`);
+      __hookjsTrace(trace);
+      return oriFunction.apply(this, arguments);
+    }
+  },
   hook_window_setTimeout: function (trace) {
     let oriSetTimeout = window.setTimeout;
     window.setTimeout = function () {

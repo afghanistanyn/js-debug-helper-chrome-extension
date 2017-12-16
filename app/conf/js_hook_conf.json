@@ -15,6 +15,10 @@
     "hook": true,
     "trace": true
   },
+  "window_Function": {
+    "hook": true,
+    "trace": true
+  },
   "window_setTimeout": {
     "hook": true,
     "trace": true
