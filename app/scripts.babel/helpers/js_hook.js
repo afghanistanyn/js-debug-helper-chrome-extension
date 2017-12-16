@@ -204,6 +204,22 @@ window.__hookjs = {
       }
     })
   },
+  hook_window_storage: function (trace) {
+    let oriSetItem = Storage.prototype.setItem;
+    let oriGetItem = Storage.prototype.getItem;
+    Storage.prototype.setItem = function () {
+      __hookjsLog(`${this === window.localStorage ? 'localStorage' : 'sessionStorage'} setItem key:${arguments[0]} value:${arguments[1]}`);
+      console.log();
+      __hookjsTrace(trace);
+      return oriSetItem.apply(this, arguments)
+    };
+    Storage.prototype.getItem = function () {
+      let value = oriGetItem.apply(this, arguments);
+      __hookjsLog(`${this === window.localStorage ? 'localStorage' : 'sessionStorage'} getItem key:${arguments[0]} value:${value}`);
+      __hookjsTrace(trace);
+      return value;
+    }
+  },
   // Object.getOwnPropertyDescriptor(Document.prototype,'referrer')
   // {get: ƒ, set: undefined, enumerable: true, configurable: true}
   hook_document_referrer: function (trace) {
