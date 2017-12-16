@@ -67,6 +67,10 @@
     "hook": true,
     "trace": true
   },
+  "document_cookie": {
+    "hook": true,
+    "trace": true
+  },
   "window_postMessage": {
     "hook": true,
     "trace": true

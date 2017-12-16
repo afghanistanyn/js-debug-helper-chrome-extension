@@ -220,6 +220,25 @@ window.__hookjs = {
       return value;
     }
   },
+  hook_document_cookie: function (trace) {
+    let cookie_setter = Document.prototype.__lookupSetter__('cookie');
+    let cookie_getter = Document.prototype.__lookupGetter__('cookie');
+    Object.defineProperty(Document.prototype, 'cookie', {
+      get: function () {
+        let cookies = cookie_getter.apply(this, arguments);
+        cookies = cookies.split('; ');
+        __hookjsLog('GET Cookie ');
+        console.log(cookies);
+        __hookjsTrace(trace);
+        return cookie_getter.apply(this, arguments);
+      },
+      set: function () {
+        __hookjsLog(`SET Cookie ${arguments[0]}`);
+        __hookjsTrace(trace);
+        return cookie_setter.apply(this, arguments);
+      }
+    })
+  },
   // Object.getOwnPropertyDescriptor(Document.prototype,'referrer')
   // {get: ƒ, set: undefined, enumerable: true, configurable: true}
   hook_document_referrer: function (trace) {
