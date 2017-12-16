@@ -62,5 +62,13 @@
   "document_referrer": {
     "hook": true,
     "trace": true
+  },
+  "window_postMessage": {
+    "hook": true,
+    "trace": true
+  },
+  "window_onMessage": {
+    "hook": true,
+    "trace": true
   }
 }

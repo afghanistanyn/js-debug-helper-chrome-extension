@@ -221,5 +221,24 @@ window.__hookjs = {
         return _ref;
       }
     })
+  },
+  hook_window_postMessage: function (trace) {
+    let oriPostMessage = window.postMessage;
+    window.postMessage = function () {
+      __hookjsLog(`window_postMessage msg:${arguments[0]} target origin:${arguments[1]} `);
+      __hookjsTrace(trace);
+      return oriPostMessage.apply(this, arguments)
+    }
+  },
+  hook_window_onMessage: function (trace) {
+    let oriFunc = window.addEventListener;
+    window.addEventListener = function () {
+      if (arguments[0] === 'message') {
+        __hookjsLog('window listening message, listener as follow');
+        console.log(arguments[1]);
+        __hookjsTrace(trace);
+      }
+      return oriFunc.apply(this, arguments)
+    }
   }
 };
