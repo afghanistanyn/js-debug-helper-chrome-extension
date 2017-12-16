@@ -31,6 +31,14 @@ window.__hookjs = {
       return oriDocumentWrite.apply(this, arguments);
     }
   },
+  hook_document_writeln: function (trace) {
+    let oriDocumentWriteln = Document.prototype.writeln;
+    Document.prototype.writeln = function (str) {
+      __hookjsLog(`document_writeln ${str}`);
+      __hookjsTrace(trace);
+      return oriDocumentWriteln.apply(this, arguments);
+    }
+  },
   hook_window_eval: function (trace) {
     let oriEval = window.eval;
     window.eval = function (str) {

@@ -7,6 +7,10 @@
     "hook": true,
     "trace": true
   },
+  "document_writeln": {
+    "hook": true,
+    "trace": true
+  },
   "window_eval": {
     "hook": true,
     "trace": true
