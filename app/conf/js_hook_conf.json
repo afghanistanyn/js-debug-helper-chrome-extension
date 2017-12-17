@@ -82,5 +82,9 @@
   "window_listen_message": {
     "hook": true,
     "trace": true
+  },
+  "window_onmessage": {
+    "hook": true,
+    "trace": true
   }
 }

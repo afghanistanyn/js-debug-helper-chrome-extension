@@ -283,5 +283,23 @@ window.__hookjs = {
       }
       return oriFunc.apply(this, arguments)
     }
+  },
+  hook_window_onmessage: function (trace) {
+    let oriSetter = window.__lookupSetter__('onmessage');
+    let oriGetter = window.__lookupGetter__('onmessage');
+    Object.defineProperty(window, 'onmessage', {
+      get: function () {
+        __hookjsLog(`GET window.onmessage`);
+        __hookjsTrace(trace);
+        return oriGetter.apply(this, arguments);
+      },
+      set: function () {
+        __hookjsLog(`SET window.onmessage`);
+        console.log(arguments[0]);
+        __hookjsTrace(trace);
+        return oriSetter.apply(this, arguments);
+      }
+    })
+
   }
 };
