@@ -273,7 +273,7 @@ window.__hookjs = {
       return oriPostMessage.apply(this, arguments)
     }
   },
-  hook_window_onMessage: function (trace) {
+  hook_window_listen_message: function (trace) {
     let oriFunc = window.addEventListener;
     window.addEventListener = function () {
       if (arguments[0] === 'message') {

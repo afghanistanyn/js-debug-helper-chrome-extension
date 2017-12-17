@@ -79,7 +79,7 @@
     "hook": true,
     "trace": true
   },
-  "window_onMessage": {
+  "window_listen_message": {
     "hook": true,
     "trace": true
   }
