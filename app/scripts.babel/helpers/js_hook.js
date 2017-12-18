@@ -239,6 +239,23 @@ window.__hookjs = {
       return oriFunc.apply(this, arguments)
     }
   },
+  hook_window_onhashchange: function (trace) {
+    let oriSetter = window.__lookupSetter__('onhashchange');
+    let oriGetter = window.__lookupGetter__('onhashchange');
+    Object.defineProperty(window, 'onhashchange', {
+      get: function () {
+        __hookjsLog(`GET window.onhashchange`);
+        __hookjsTrace(trace);
+        return oriGetter.apply(this, arguments);
+      },
+      set: function () {
+        __hookjsLog(`SET window.onhashchange`);
+        console.log(arguments[0]);
+        __hookjsTrace(trace);
+        return oriSetter.apply(this, arguments);
+      }
+    })
+  },
   hook_document_cookie: function (trace) {
     let cookie_setter = Document.prototype.__lookupSetter__('cookie');
     let cookie_getter = Document.prototype.__lookupGetter__('cookie');
