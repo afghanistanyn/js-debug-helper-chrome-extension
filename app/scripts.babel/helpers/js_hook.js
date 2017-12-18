@@ -228,6 +228,17 @@ window.__hookjs = {
       return value;
     }
   },
+  hook_window_listen_hashchange: function (trace) {
+    let oriFunc = window.addEventListener;
+    window.addEventListener = function () {
+      if (arguments[0] === 'hashchange') {
+        __hookjsLog('window hashchange, listener as follow');
+        console.log(arguments[1]);
+        __hookjsTrace(trace);
+      }
+      return oriFunc.apply(this, arguments)
+    }
+  },
   hook_document_cookie: function (trace) {
     let cookie_setter = Document.prototype.__lookupSetter__('cookie');
     let cookie_getter = Document.prototype.__lookupGetter__('cookie');

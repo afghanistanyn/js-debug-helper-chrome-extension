@@ -67,6 +67,10 @@
     "hook": true,
     "trace": true
   },
+  "window_listen_hashchange": {
+    "hook": true,
+    "trace": true
+  },
   "document_referrer": {
     "hook": true,
     "trace": true
