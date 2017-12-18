@@ -244,12 +244,12 @@ window.__hookjs = {
     let oriGetter = window.__lookupGetter__('onhashchange');
     Object.defineProperty(window, 'onhashchange', {
       get: function () {
-        __hookjsLog(`GET window.onhashchange`);
+        __hookjsLog('GET window.onhashchange');
         __hookjsTrace(trace);
         return oriGetter.apply(this, arguments);
       },
       set: function () {
-        __hookjsLog(`SET window.onhashchange`);
+        __hookjsLog('SET window.onhashchange');
         console.log(arguments[0]);
         __hookjsTrace(trace);
         return oriSetter.apply(this, arguments);
@@ -317,12 +317,12 @@ window.__hookjs = {
     let oriGetter = window.__lookupGetter__('onmessage');
     Object.defineProperty(window, 'onmessage', {
       get: function () {
-        __hookjsLog(`GET window.onmessage`);
+        __hookjsLog('GET window.onmessage');
         __hookjsTrace(trace);
         return oriGetter.apply(this, arguments);
       },
       set: function () {
-        __hookjsLog(`SET window.onmessage`);
+        __hookjsLog('SET window.onmessage');
         console.log(arguments[0]);
         __hookjsTrace(trace);
         return oriSetter.apply(this, arguments);
