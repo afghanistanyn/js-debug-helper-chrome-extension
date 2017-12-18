@@ -59,16 +59,20 @@ window.__hookjs = {
   hook_window_setTimeout: function (trace) {
     let oriSetTimeout = window.setTimeout;
     window.setTimeout = function () {
-      __hookjsLog(`setTimeout ${arguments[0]}`);
-      __hookjsTrace(trace);
+      if (typeof arguments[0] === 'string') {// 还有可能是 function
+        __hookjsLog(`setTimeout use str:${arguments[0]}`);
+        __hookjsTrace(trace);
+      }
       return oriSetTimeout.apply(this, arguments);
     }
   },
   hook_window_setInterval: function (trace) {
     let oriSetInterval = window.setInterval;
     window.setInterval = function () {
-      __hookjsLog(`setInterval ${arguments[0]}`);
-      __hookjsTrace(trace);
+      if (typeof arguments[0] === 'string') {// 还有可能是 function
+        __hookjsLog(`setInterval ${arguments[0]}`);
+        __hookjsTrace(trace);
+      }
       return oriSetInterval.apply(this, arguments);
     }
   },
