@@ -35,7 +35,7 @@
   ],
   "web_accessible_resources": [
     "scripts/helpers/*.js",
-    "conf/js_hook_conf.json"
+    "conf/*.json"
   ],
   "browser_action": {
     "default_icon": {

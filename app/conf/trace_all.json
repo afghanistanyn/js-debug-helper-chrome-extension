@@ -1,0 +1,102 @@
+{
+  "document_domain": {
+    "hook": true,
+    "trace": true
+  },
+  "document_write": {
+    "hook": true,
+    "trace": true
+  },
+  "document_writeln": {
+    "hook": true,
+    "trace": true
+  },
+  "window_eval": {
+    "hook": true,
+    "trace": true
+  },
+  "window_Function": {
+    "hook": true,
+    "trace": true
+  },
+  "window_setTimeout": {
+    "hook": true,
+    "trace": true
+  },
+  "window_setInterval": {
+    "hook": true,
+    "trace": true
+  },
+  "HTMLScriptElement_src": {
+    "hook": true,
+    "trace": true
+  },
+  "HTMLScriptElement_text": {
+    "hook": true,
+    "trace": true
+  },
+  "HTMLScriptElement_innerText": {
+    "hook": true,
+    "trace": true
+  },
+  "HTMLScriptElement_insertAdjacentText": {
+    "hook": true,
+    "trace": true
+  },
+  "HTMLScriptElement_textContent": {
+    "hook": true,
+    "trace": true
+  },
+  "Element_innerHTML": {
+    "hook": true,
+    "trace": true
+  },
+  "Element_outerHTML": {
+    "hook": true,
+    "trace": true
+  },
+  "Element_insertAdjacentHTML": {
+    "hook": true,
+    "trace": true
+  },
+  "window_name": {
+    "hook": true,
+    "trace": true
+  },
+  "window_storage": {
+    "hook": true,
+    "trace": true
+  },
+  "window_listen_hashchange": {
+    "hook": true,
+    "trace": true
+  },
+  "window_onhashchange": {
+    "hook": true,
+    "trace": true
+  },
+  "document_referrer": {
+    "hook": true,
+    "trace": true
+  },
+  "document_cookie": {
+    "hook": true,
+    "trace": true
+  },
+  "window_postMessage": {
+    "hook": true,
+    "trace": true
+  },
+  "window_listen_message": {
+    "hook": true,
+    "trace": true
+  },
+  "window_onmessage": {
+    "hook": true,
+    "trace": true
+  },
+  "window_listen_beforeunload": {
+    "hook": true,
+    "trace": true
+  }
+}
