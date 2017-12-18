@@ -94,5 +94,9 @@
   "window_onmessage": {
     "hook": true,
     "trace": true
+  },
+  "window_listen_beforeunload": {
+    "hook": true,
+    "trace": true
   }
 }

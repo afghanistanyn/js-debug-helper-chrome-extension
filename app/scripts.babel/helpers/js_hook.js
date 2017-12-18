@@ -329,5 +329,12 @@ window.__hookjs = {
       }
     })
 
+  },
+
+  hook_window_listen_beforeunload: function (trace) {
+    // 用来监视 iframe 跳转
+    window.addEventListener('beforeunload', function () {
+      __hookjsLog(`window beforeunload, ${location.href}`);
+    })
   }
 };
