@@ -9,3 +9,4 @@ test/bower_components
 package
 app/scripts
 
+app/conf/custom_hook.json
