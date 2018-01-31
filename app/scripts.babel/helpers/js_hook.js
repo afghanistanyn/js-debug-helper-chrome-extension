@@ -216,6 +216,22 @@ window.__hookjs = {
       }
     })
   },
+  hook_window_opener: function (trace) {
+    let oriOpener = window.opener;
+    Object.defineProperty(window, 'opener', {
+      get: function () {
+        __hookjsLog('GET window_opener');
+        console.log(oriOpener);
+        __hookjsTrace(trace);
+        return oriOpener;
+      },
+      set: function () {
+        __hookjsLog(`SET window_opener ${arguments[0]}`);
+        __hookjsTrace(trace);
+        oriOpener = arguments[0];
+      }
+    })
+  },
   hook_window_storage: function (trace) {
     let oriSetItem = Storage.prototype.setItem;
     let oriGetItem = Storage.prototype.getItem;

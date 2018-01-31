@@ -63,6 +63,10 @@
     "hook": true,
     "trace": true
   },
+  "window_opener": {
+    "hook": true,
+    "trace": true
+  },
   "window_storage": {
     "hook": true,
     "trace": true
