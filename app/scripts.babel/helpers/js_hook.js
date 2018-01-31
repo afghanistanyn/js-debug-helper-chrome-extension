@@ -12,8 +12,8 @@ window.__hookjs = {
     let oriGetter = document.__lookupGetter__('domain');
     Object.defineProperty(Document.prototype, 'domain', {
       get: function () {
-        __hookjsLog('Get document.domain', '#000');
-        __hookjsTrace(trace);
+        // __hookjsLog('Get document.domain', '#000');
+        // __hookjsTrace(trace);
         return oriGetter.apply(this, arguments)
       },
       set: function () {
