@@ -4,6 +4,7 @@ console.log('js debug helper running');
 
 function injectScript(scriptString) {
   let actualCode = '(function(){' + scriptString + '})();';
+  actualCode += '(function(){document.currentScript.remove()})();';// 执行完就删除自身 script
   let script = document.createElement('script');
   script.textContent = actualCode;
   (document.head || document.documentElement).appendChild(script);
