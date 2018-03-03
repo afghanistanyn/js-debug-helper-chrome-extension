@@ -230,21 +230,21 @@ window.__detectJSLib = function () {
       alert: true,
       info: ''
     },
-    'Clappr':{
+    'Clappr': {
       objName: 'Clappr',
       type: 'object',
       versionProperty: 'Clappr.version',
       alert: true,
       info: ''
     },
-    'soundManager':{
+    'soundManager': {
       objName: 'soundManager',
       type: 'object',
       versionProperty: 'soundManager.version',
       alert: true,
       info: ''
     },
-    'SoundJS':{
+    'SoundJS': {
       objName: 'createjs',
       type: 'object',
       versionProperty: 'createjs.SoundJS.version',
@@ -259,12 +259,19 @@ window.__detectJSLib = function () {
       alert: true,
       info: 'plupload.ua.swf_url'
     },
-    'FileAPI':{
+    'FileAPI': {
       objName: 'FileAPI',
       type: 'object',
       versionProperty: 'FileAPI.version',
       alert: true,
       info: 'FileAPI.flashUrl，FileAPI.flashImageUrl，FileAPI.flashWebcamUrl，'
+    },
+    'WebUploader': {
+      objName: 'WebUploader',
+      type: 'object',
+      versionProperty: 'WebUploader.version',
+      alert: true,
+      info: '可以 some 攻击'
     }
   };
 
